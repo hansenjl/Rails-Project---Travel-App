@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def fbcreate
-    binding.pry
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.username = auth['info']['email']
@@ -25,6 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
+    @current_user = nil
   end
 
   private
