@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root 'cities#index'
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
   resources :countries
-  resources :sessions
   resources :visits
   resources :cities do
     resources :reviews
