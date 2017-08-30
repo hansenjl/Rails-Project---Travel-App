@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
 
+  get '/auth/facebook/callback' => 'sessions#fbcreate'
+
   resources :countries
   resources :visits
   resources :cities

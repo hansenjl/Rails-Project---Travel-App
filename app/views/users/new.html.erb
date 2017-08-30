@@ -7,4 +7,4 @@ Password Confirmation: <%= f.password_field :password_confirmation %> <br><br>
 <%= f.submit "Sign Up" %>
 <% end %>
 
-<h3>Or use Facebook to sign up</h3>
+<h3>Or <%= link_to("Log in with Facebook!", '/auth/facebook') %></h3>

@@ -5,4 +5,4 @@ Password: <%= f.password_field :password %>
 <%= f.submit "Log In" %>
 <% end %>
 
-<h3>Or use Facebook to login</h3>
+<h3>Or <%= link_to("Log in with Facebook!", '/auth/facebook') %></h3>
