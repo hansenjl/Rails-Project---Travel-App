@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   resources :countries
   resources :visits
-  resources :cities do
-    resources :reviews
+  resources :cities
+  resources :users  do
+    resources :wishlists
   end
-  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
