@@ -1,0 +1,8 @@
+<h2>Log In Below</h2>
+<%= form_for :user do |f| %>
+Username: <%= f.text_field :username %>
+Password: <%= f.password_field :password %>
+<%= f.submit "Log In" %>
+<% end %>
+
+<h3>Or use Facebook to login</h3>

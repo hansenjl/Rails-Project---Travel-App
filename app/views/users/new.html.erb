@@ -1,0 +1,10 @@
+<h2>Sign Up Below</h2>
+<%= form_for :user do |f| %>
+Username: <%= f.text_field :username %>
+Name: <%= f.text_field :name %>
+Password: <%= f.password_field :password %>
+Password Confirmation: <%= f.password_field :password_confirmation %>
+<%= f.submit "Sign Up" %>
+<% end %>
+
+<h3>Or use Facebook to sign up</h3>
