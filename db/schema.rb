@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(version: 20170830190741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
-    t.integer "user_id"
-    t.integer "city_id"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -45,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170830190741) do
   create_table "visits", force: :cascade do |t|
     t.integer "city_id"
     t.integer "user_id"
+    t.integer "city_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
