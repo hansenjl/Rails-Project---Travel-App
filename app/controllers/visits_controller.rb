@@ -25,6 +25,11 @@ class VisitsController < ApplicationController
     @visits = @user.visits.all
   end
 
+  def destroy
+    Visit.find(params[:id]).destroy
+    redirect_to user_visits_path
+  end
+
   private
 
   def visit_params

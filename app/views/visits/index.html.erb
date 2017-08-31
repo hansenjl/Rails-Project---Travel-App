@@ -1,6 +1,8 @@
 <h1>Places you've visited!</h1>
-<ul>
+
 <% @visits.each do |visit| %>
+<ul>
   <li><%= visit.city.name %> | <%= visit.city.country.name%> | <%= visit.city_rating %> stars</li>
-<% end %>
+  <%= link_to "Delete", [@user,visit], method: :delete %>
 </ul>
+<% end %>
