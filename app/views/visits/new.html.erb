@@ -4,11 +4,12 @@
 
 <h4>Or enter a new city:</h4>
 <%= form_for :visit do |f| %>
-City Name: <%= f.text_field :name %> <br>
-Country: <%= f.select(:country_id) do %>
+City Name: <%= f.text_field :name %> <br><br>
+Country:  <%= f.select(:country_id) do %>
     <% @countries.each do |c|%>
       <%= content_tag(:option, c.name, value: c.id)%>
     <% end %>
   <% end %>
+  <br></br>
 <%= f.submit "Save" %>
 <% end %>
