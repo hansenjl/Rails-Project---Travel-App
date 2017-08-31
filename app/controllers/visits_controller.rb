@@ -9,18 +9,25 @@ class VisitsController < ApplicationController
   end
 
   def create
-    binding.pry
+
     visit = Visit.new(visit_params)
+    visit.user_id = params[:user_id]
+    visit.set_city(params[:visit][:city_attributes], visit)
+    binding.pry
     if visit.save
       redirect_to user_visits_path(user_id: params[:user_id])
     else
-      redirect_to new_user_visit(user_id: params[:user_id])
+      redirect_to new_user_visit_url
     end
+  end
+
+  def index
+    @visits = Visit.all
   end
 
   private
 
   def visit_params
-    params.require(:visit).permit(:rating, :city_attribute, :user_id)
+    params.require(:visit).permit(:city_rating, :city_attributes)
   end
 end
