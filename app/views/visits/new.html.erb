@@ -1,21 +1,30 @@
 <h2>Add a visit to your travel log!</h2>
 <h4>Choose from a city below:</h4><br>
 
-  City Name:
+<%= form_for :visit, url: "/users/#{@user.id}/visits" do |f| %>
+  City Name: <%= f.select(:city_id) do %>
+    <%= @cities.each do |c|%>
+      <%= content_tag(:option, c.name, value: c.id)%>
+    <% end %>
+  <%end%>
 
 
 
 <h4>Or enter a new city:</h4>
-  <%= form_for :visit, url: "/visits" do |f| %>
-  City Name: <%= f.text_field :city_name %> <br><br>
-  Existing Country:  <%= f.select(:country_id) do %>
+
+
+
+  <%= f.fields_for :city_attributes do |city_fields|%>
+  City Name: <%= city_fields.text_field :name %> <br><br>
+  Existing Country:  <%= city_fields.select(:country_id) do %>
       <% @countries.each do |c|%>
         <%= content_tag(:option, c.name, value: c.id)%>
       <% end %>
     <% end %>
-  New Country: <%= f.text_field :country %>
+  New Country: <%= city_fields.text_field :country %>
+  <%end%>
   <br><br>
-  Rate your visit on a scale from 1-5 (5 being the best): <%= f.number_field :rating, min:1, max:5 %>
+  Rate your visit on a scale from 1-5 (5 being the best): <%= f.number_field :city_rating, min:1, max:5 %>
   <br><br>
   <%= f.submit "Save" %>
   <% end %>
