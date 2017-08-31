@@ -1,0 +1,6 @@
+<h1>Places you've visited!</h1>
+<ul>
+<% @visits.each do |visit| %>
+  <li><%= visit.city.name %> | <%= visit.city.country.name%> | <%= visit.city_rating %> stars</li>
+<% end %>
+</ul>

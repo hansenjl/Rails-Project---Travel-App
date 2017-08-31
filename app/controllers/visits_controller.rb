@@ -22,7 +22,8 @@ class VisitsController < ApplicationController
   end
 
   def index
-    @visits = Visit.all
+    @user = User.find_by(id: params[:user_id])
+    @visits = @user.visits.all
   end
 
   private
