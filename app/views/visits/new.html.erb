@@ -1,15 +1,24 @@
 <h2>Add a visit to your travel log!</h2>
 <h4>Choose from a city below:</h4><br>
+  <%= form_for :visit do |f| %>
+  City Name:  <%= f.select(:city_id) do %>
+      <% @cities.each do |c|%>
+        <%= content_tag(:option, "#{c.name}, #{c.country}", value: c.id)%>
+      <% end %>
+    <% end %>
+    <br></br>
+  <%= f.submit "Save" %>
+  <% end %>
 
 
 <h4>Or enter a new city:</h4>
-<%= form_for :visit do |f| %>
-City Name: <%= f.text_field :name %> <br><br>
-Country:  <%= f.select(:country_id) do %>
-    <% @countries.each do |c|%>
-      <%= content_tag(:option, c.name, value: c.id)%>
+  <%= form_for :visit do |f| %>
+  City Name: <%= f.text_field :name %> <br><br>
+  Country:  <%= f.select(:country_id) do %>
+      <% @countries.each do |c|%>
+        <%= content_tag(:option, c.name, value: c.id)%>
+      <% end %>
     <% end %>
+    <br></br>
+  <%= f.submit "Save" %>
   <% end %>
-  <br></br>
-<%= f.submit "Save" %>
-<% end %>
