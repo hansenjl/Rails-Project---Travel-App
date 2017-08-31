@@ -9,15 +9,14 @@ class VisitsController < ApplicationController
   end
 
   def create
-
-    visit = Visit.new(visit_params)
-    visit.user_id = params[:user_id]
-    visit.set_city(params[:visit][:city_attributes], visit)
-    binding.pry
-    if visit.save
+    @user = User.find_by(id: params[:user_id])
+    @visit = Visit.new(visit_params)
+    @visit.user_id = params[:user_id]
+    @visit.set_city(params[:visit][:city_attributes], @visit)
+    if @visit.save
       redirect_to user_visits_path(user_id: params[:user_id])
     else
-      redirect_to new_user_visit_url
+      redirect_to new_user_visit(@user)
     end
   end
 
