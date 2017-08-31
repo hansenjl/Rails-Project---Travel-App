@@ -2,7 +2,7 @@
 
 <h3>Cities:</h3>
 <ol>
-  <% @country.cities.each do |c|%>
+  <% @country.ranked_cities.each do |c|%>
   <li><%= link_to c.name, city_path(c) %> | overall rating: <%= c.overall_rating %> | times visited: <%= c.times_visited %></li>
   <% end %>
 </ol>
