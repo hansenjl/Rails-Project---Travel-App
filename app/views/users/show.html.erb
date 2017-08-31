@@ -1,0 +1,11 @@
+<h1><%= current_user.name%>'s Travel Log</h1>
+
+<h2>Cities Visited:</h2>
+<ul>
+  <% current_user.cities.each do |city|%>
+  <li><%=city.name%> | <%=city.overall_rating%> </li>
+  <% end %>
+</ul>
+
+
+<h3>Countries Visited:</h3>
