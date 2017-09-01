@@ -10,7 +10,7 @@
 </ul>
 
 
-<h3>Countries Visited:</h3>
+<h2>Countries Visited:</h2>
 <ul>
   <% @user.countries_visited.each do |country|%>
     <li><%=link_to country.name, country_path(country) %> </li>
