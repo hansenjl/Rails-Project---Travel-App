@@ -19,6 +19,7 @@
 <%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
   <%= f.fields_for :city_attributes do |city_fields|%>
     City Name: <%= city_fields.select(:city_id) do %>
+      <%= content_tag(:option)%>
       <%= @cities.each do |c|%>
         <%= content_tag(:option, c.name, value: c.id)%>
       <% end %>
@@ -33,6 +34,7 @@
 
   City Name: <%= city_fields.text_field :name %> <br><br>
   Existing Country:  <%= city_fields.select(:country_id) do %>
+      <%= content_tag(:option)%>
       <% @countries.each do |c|%>
         <%= content_tag(:option, c.name, value: c.id)%>
       <% end %>

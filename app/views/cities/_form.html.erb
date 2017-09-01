@@ -16,8 +16,8 @@
 <%= form_for @city  do |f| %>
   City Name: <%= f.text_field :name %> <br><br>
 
-  <%= f.fields_for :countries do |country|%>
-  Select an existing country:  <%= country.collection_select(:country, Country.all, :id, :name)  %>
+  <%= f.fields_for :country do |country|%>
+  Select an existing country:  <%= country.collection_select(:id, Country.all, :id, :name, {include_blank: true})  %>
   Or add a new country: <%= country.text_field :name %>
   <% end %>
     <br><br>
