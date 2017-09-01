@@ -17,6 +17,10 @@ class CountriesController < ApplicationController
     @country = Country.find_by(id: params[:id])
   end
 
+  def index
+    @countries = Country.all
+  end
+
   private
 
   def country_params
