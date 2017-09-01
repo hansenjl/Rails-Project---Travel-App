@@ -1,0 +1,8 @@
+<h1>Most Visited Country: <%= @country.name %> </h1>
+
+<h3>Cities:</h3>
+<ul>
+  <% @country.cities.each do |city| %>
+    <li><%= link_to city.name, city_path(city) %></li>
+  <% end %>
+</ul>

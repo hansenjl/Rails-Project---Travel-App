@@ -14,5 +14,17 @@ class Country < ApplicationRecord
     self.cities.select { |c| c.visits.count == 0}
   end
 
+  def visits_to_country
+    total_visits = 0
+    self.cities.each do |city|
+      total_visits = total_visits + city.times_visited
+    end
+    total_visits
+  end
+
+  def self.most_visited
+    Country.all.sort{ do |a,b| b.visits_to_country <=> a.visits_to_country}.first
+  end
+
 
 end

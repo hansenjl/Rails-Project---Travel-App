@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+  get 'countries/most_visited' => 'countries#most_visited'
 
   get '/auth/facebook/callback' => 'sessions#fbcreate'
 

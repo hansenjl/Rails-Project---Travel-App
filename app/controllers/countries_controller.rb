@@ -40,6 +40,10 @@ class CountriesController < ApplicationController
     redirect_to countries_path
   end
 
+  def most_visited
+    @country = Country.most_visited
+  end
+
   private
 
   def country_params
