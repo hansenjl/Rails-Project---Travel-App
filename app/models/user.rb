@@ -6,4 +6,12 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :visits
   validates :username, uniqueness: true
 
+  def countries_visited
+    countries = []
+    self.cities.each do |city|
+      countries << city.country
+    end
+    countries.uniq
+  end
+
 end
