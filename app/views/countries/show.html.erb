@@ -3,6 +3,15 @@
 <h3>Cities:</h3>
 <ol>
   <% @country.ranked_cities.each do |c|%>
-  <li><%= link_to c.name, city_path(c) %> | overall rating: <%= c.overall_rating %> | times visited: <%= c.times_visited %></li>
+
+      <li><%= link_to c.name, city_path(c) %> | overall rating: <%= c.overall_rating %> | times visited: <%= c.times_visited %></li>
+
+  <% end %>
+  <% @country.unranked_cities.each do |c|%>
+
+      <li><%= link_to c.name, city_path(c) %> | overall rating: N/A | times visited: 0 </li>
+
   <% end %>
 </ol>
+
+<%= link_to "edit country", edit_country_path(@country)%>

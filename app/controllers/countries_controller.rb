@@ -13,6 +13,14 @@ class CountriesController < ApplicationController
     end
   end
 
+  def edit
+     @country = Country.find_by(id: params[:id])
+  end
+
+  def update
+     @country = Country.find_by(id: params[:id])
+  end
+
   def show
     @country = Country.find_by(id: params[:id])
   end
