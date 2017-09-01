@@ -16,7 +16,7 @@ class VisitsController < ApplicationController
     if @visit.save
       redirect_to user_visits_path(user_id: params[:user_id])
     else
-      redirect_to new_user_visit(@user)
+      redirect_to new_user_visit_url
     end
   end
 

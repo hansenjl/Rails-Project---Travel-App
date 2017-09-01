@@ -14,7 +14,7 @@
   </div>
 <% end %>
 
-<h4>Choose from a city below:</h4><br>
+<h4>Choose from a city below:</h4>
 
 <%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
   <%= f.fields_for :city_attributes do |city_fields|%>
