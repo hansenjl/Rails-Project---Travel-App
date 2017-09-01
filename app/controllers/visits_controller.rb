@@ -16,6 +16,7 @@ class VisitsController < ApplicationController
     if @visit.save
       redirect_to user_visits_path(user_id: params[:user_id])
     else
+      flash[:notice] = 'Visit was not saved. You cannot record the same visit twice and each visit must include a city, country, and rating.'
       redirect_to new_user_visit_url
     end
   end

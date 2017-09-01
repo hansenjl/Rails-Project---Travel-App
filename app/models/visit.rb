@@ -23,9 +23,11 @@ class Visit < ApplicationRecord
     else
       country = Country.find_by(id: city_attributes[:country_id])
     end
+    if !city.nil? && !country.nil?
       country.cities << city
       country.save
       city.visits << visit
       city.save
+    end
   end
 end
