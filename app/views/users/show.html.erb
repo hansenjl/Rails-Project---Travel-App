@@ -1,11 +1,11 @@
 <h1><%= current_user.name%>'s Travel Log</h1>
 
-<%= link_to "Add a city", new_visit_path %>
+<%= link_to "Add a city", new_user_visit_path(current_user.id) %>
 
 <h2>Cities Visited:</h2>
 <ul>
   <% current_user.cities.each do |city|%>
-  <li><%=city.name%> | <%=city.overall_rating%> </li>
+  <li><%=link_to city.name, city_path(city) %> | <%=city.overall_rating%> stars</li>
   <% end %>
 </ul>
 
