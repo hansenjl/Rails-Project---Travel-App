@@ -3,6 +3,10 @@
 <h3>Cities:</h3>
 <ul>
   <% @country.cities.each do |city| %>
-    <li><%= link_to city.name, city_path(city) %></li>
+    <% if city.visited? %>
+      <%= render :partial => "rankedcities", :locals => {:city => city}%>
+    <% else %>
+      <%= render :partial => "unrankedcities", :locals => {:city => city}%>
+    <% end %>
   <% end %>
 </ul>

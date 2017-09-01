@@ -1,6 +1,10 @@
 <h2>All Cities:</h2>
-<% @cities.each do |city|%>
 <ul>
-  <li><%= link_to city.name, city_path(city)%> | <%= city.country.name %> | Visitors: <%= city.visits.count%></li>
-</ul>
+<% @cities.each do |city|%>
+  <% if city.visited? %>
+      <%= render :partial => "countries/rankedcities", :locals => {:city => city}%>
+    <% else %>
+      <%= render :partial => "countries/unrankedcities", :locals => {:city => city}%>
+    <% end %>
 <% end %>
+</ul>

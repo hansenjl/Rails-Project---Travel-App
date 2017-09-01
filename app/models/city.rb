@@ -19,6 +19,14 @@ class City < ApplicationRecord
     self.visits.count
   end
 
+  def visited?
+    if self.times_visited > 0
+      true
+    else
+      false
+    end
+  end
+
   def countries=(countries)
     if !countries[:name].empty?
       country = Country.find_or_create_by(name: countries[:name])

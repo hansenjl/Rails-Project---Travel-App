@@ -2,14 +2,14 @@
 
 <h3>Cities:</h3>
 <ol>
-  <% @country.ranked_cities.each do |c|%>
+  <% @country.ranked_cities.each do |city|%>
 
-      <li><%= link_to c.name, city_path(c) %> | overall rating: <%= c.overall_rating %> | visitors: <%= c.times_visited %></li>
+    <%= render :partial => "rankedcities", :locals => {:city => city}%>
 
   <% end %>
-  <% @country.unranked_cities.each do |c|%>
+  <% @country.unranked_cities.each do |city|%>
 
-      <li><%= link_to c.name, city_path(c) %> | overall rating: N/A | visitors: 0 </li>
+    <%= render :partial => "unrankedcities", :locals => {:city => city}%>
 
   <% end %>
 </ol>
