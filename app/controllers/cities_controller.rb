@@ -29,6 +29,12 @@ class CitiesController < ApplicationController
 
   def update
     @city = City.find_by(id: params[:id])
+    @city.update(city_params)
+    if @city.save
+    redirect_to cities_path
+    else
+      render 'cities/edit'
+    end
   end
 
   private
