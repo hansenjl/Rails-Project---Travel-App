@@ -20,7 +20,7 @@ class CitiesController < ApplicationController
   end
 
   def index
-    @cities = City.all
+    @cities = City.all.sort{|a,b|b.visits.count <=> a.visits.count}
   end
 
   private
