@@ -10,9 +10,9 @@ class City < ApplicationRecord
   def overall_rating
     total = 0
     self.visits.each do |visit|
-      total = total + visit.city_rating
+      total = total + visit.city_rating.to_f
     end
-    total = total / times_visited
+    total = total / times_visited.to_f
   end
 
   def times_visited

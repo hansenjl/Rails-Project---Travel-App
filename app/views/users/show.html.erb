@@ -1,18 +1,18 @@
-<h1><%= current_user.name%>'s Travel Log</h1>
+<h1><%= @user.name%>'s Travel Log</h1>
 
-<%= link_to "Add a city", new_user_visit_path(current_user.id) %>
+<%= link_to "Add a city", new_user_visit_path(@user.id) %>
 
 <h2>Cities Visited:</h2>
 <ul>
-  <% current_user.cities.each do |city|%>
-    <li><%=link_to city.name, city_path(city) %> | My Rating: <%= city.visits.find_by(user_id: current_user.id).city_rating %> stars | Overall Rating: <%=city.overall_rating%> stars</li>
+  <% @user.cities.each do |city|%>
+    <li><%=link_to city.name, city_path(city) %> | My Rating: <%= city.visits.find_by(user_id: @user.id).city_rating %> stars | Overall Rating: <%=city.overall_rating%> stars</li>
   <% end %>
 </ul>
 
 
 <h3>Countries Visited:</h3>
 <ul>
-  <% current_user.countries_visited.each do |country|%>
+  <% @user.countries_visited.each do |country|%>
     <li><%=link_to country.name, country_path(country) %> </li>
   <% end %>
 </ul>
