@@ -23,6 +23,14 @@ class CitiesController < ApplicationController
     @cities = City.all.sort{|a,b|b.visits.count <=> a.visits.count}
   end
 
+  def edit
+    @city = City.find_by(id: params[:id])
+  end
+
+  def update
+    @city = City.find_by(id: params[:id])
+  end
+
   private
 
   def city_params

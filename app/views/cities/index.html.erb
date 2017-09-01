@@ -1,6 +1,6 @@
 <h2>All Cities:</h2>
 <% @cities.each do |city|%>
 <ul>
-  <li><%= city.name%> | <%= city.country.name %> | Visitors: <%= city.visits.count%></li>
+  <li><%= link_to city.name, city_path(city)%> | <%= city.country.name %> | Visitors: <%= city.visits.count%></li>
 </ul>
 <% end %>
