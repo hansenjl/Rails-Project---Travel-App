@@ -1,3 +1,4 @@
+require 'pry'
 class Country < ApplicationRecord
   has_many :cities
 
@@ -6,4 +7,6 @@ class Country < ApplicationRecord
       b.overall_rating  <=> a.overall_rating
     end
   end
+
+
 end
