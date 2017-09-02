@@ -1,7 +1,7 @@
 <ul>
 <% @countries.each do |country| %>
 
-    <li><%= link_to country.name, country_path(country)%> | <%= link_to "Delete", country, method: :delete %></li>
+    <li><%= link_to country.name, country_path(country)%> | <%= link_to "Delete", country, method: :delete if can? :destroy, @country %></li>
 
 <% end %>
 </ul>

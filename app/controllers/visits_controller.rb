@@ -1,6 +1,5 @@
-require 'pry'
 class VisitsController < ApplicationController
-
+  load_and_authorize_resource
   def new
     @visit = Visit.new
     @cities = City.all

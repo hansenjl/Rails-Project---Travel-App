@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  load_and_authorize_resource
 
   def show
     @city = City.find_by(id: params[:id])
