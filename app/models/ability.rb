@@ -4,19 +4,21 @@ class Ability
   def initialize(user)
 
     can :read, :all
+    can :create, User
 
     unless user.nil?
-        can :update, Visit { user_id: user.id}
-        can :create, Visit { user_id: user.id}
-        can :destroy, Visit { user_id: user.id}
-        can :update, User { user_id: user.id}
-        can :destroy, User { user_id: user.id}
+        can :update, Visit, { user_id: user.id}
+        can :create, Visit, { user_id: user.id}
+        can :destroy, Visit, { user_id: user.id}
+        can :update, User, { user_id: user.id}
+        can :destroy, User, { user_id: user.id}
         can :update, City
         can :update, Country
         can :destroy, City, :visits => nil
         can :destroy, Country, :cities => nil
         can :create, City
         can :create, Country
+    end
 
 
 
