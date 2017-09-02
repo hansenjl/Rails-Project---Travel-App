@@ -8,9 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_by(id: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.username = auth['info']['email']
+      u.password = auth['credentials']['token']
     end
-
     session[:user_id] = @user.id
+    @user.save
     redirect_to user_path(@user)
   end
 
