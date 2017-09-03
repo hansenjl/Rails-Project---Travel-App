@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  load_and_authorize_resource
 
   def new
   end
@@ -17,10 +16,13 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username])
-    return head(:forbidden) unless @user.authenticate(params[:user][:password])
-
-    session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    if @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      flash[:notice] = 'Log in failed. Please try again.'
+      render 'sessions/new'
+    end
   end
 
   def destroy

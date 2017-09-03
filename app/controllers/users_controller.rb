@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       #error message
-      redirect_to new_user_path
+      render 'users/new'
     end
   end
 
