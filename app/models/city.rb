@@ -37,4 +37,12 @@ class City < ApplicationRecord
     country
   end
 
+  def self.most_visited
+    City.all.sort{ |a,b| b.times_visited <=> a.times_visited}.first
+  end
+
+  def self.most_popular
+    City.all.sort{ |a,b| b.overall_rating <=> a.overall_rating}.first
+  end
+
 end
