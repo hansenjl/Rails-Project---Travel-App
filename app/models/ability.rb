@@ -5,19 +5,15 @@ class Ability
 
     can :read, :all
     can :create, User
+    can :most_visited, Country
 
     unless user.nil?
-        can :update, Visit, { user_id: user.id}
-        can :create, Visit, { user_id: user.id}
-        can :destroy, Visit, { user_id: user.id}
-        can :update, User, { user_id: user.id}
-        can :destroy, User, { user_id: user.id}
-        can :update, City
-        can :update, Country
+        can [:update, :create, :destroy], Visit, { user_id: user.id}
+        can [:update, :destroy] User, { user_id: user.id}
+        can :update, :create [City, Country]
         can :destroy, City, :visits => nil
         can :destroy, Country, :cities => nil
-        can :create, City
-        can :create, Country
+
     end
 
 
