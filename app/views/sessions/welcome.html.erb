@@ -1,4 +1,19 @@
 <h1>Welcome to Travel Tracker!</h1>
 
-<h3>Most visited city: <%= City.most_visited.name %> </h3>
-<h3>Highest ranked city: <%= City.most_popular.name %> </h3>
+<h3>Most visited city: <%= City.most_visited.name %> | <%= City.most_visited.times_visited %> visits</h3>
+<h3>Highest ranked city: <%= City.most_popular.name %> | <%= City.most_popular.overall_rating %> stars </h3>
+
+<h3>Current Users:</h3>
+
+<% @users.each do |user| %>
+
+  <h4><%= link_to user.name, user_path(user) %></h4>
+  <label>Places <%= user.name %> visited:</label>
+  <ul>
+    <% user.cities.each do |city|%>
+      <%= render :partial => "countries/rankedcities", :locals => {:city => city}%>
+    <% end %>
+  </ul>
+
+
+<% end %>

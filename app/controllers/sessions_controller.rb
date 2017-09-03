@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def welcome
-    @users = User.all
+    @users = User.active_users
   end
 
   def destroy

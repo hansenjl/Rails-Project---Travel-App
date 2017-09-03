@@ -8,11 +8,16 @@ class City < ApplicationRecord
 
 
   def overall_rating
-    total = 0
-    self.visits.each do |visit|
-      total = total + visit.city_rating.to_f
+    if self.visited?
+      total = 0
+      self.visits.each do |visit|
+        total = total + visit.city_rating.to_f
+      end
+      total = total / times_visited.to_f
+    else
+      total = 0
     end
-    total = total / times_visited.to_f
+    total
   end
 
   def times_visited
@@ -42,7 +47,7 @@ class City < ApplicationRecord
   end
 
   def self.most_popular
-    City.all.sort{ |a,b| b.overall_rating <=> a.overall_rating}.first
+    City.all.sort{ |a,b| b.overall_rating.to_f <=> a.overall_rating.to_f}.first
   end
 
 end

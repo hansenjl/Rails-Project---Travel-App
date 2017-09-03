@@ -14,4 +14,8 @@ class User < ApplicationRecord
     countries.uniq
   end
 
+  def self.active_users
+    User.all.select{|user| !user.visits.empty?}
+  end
+
 end
