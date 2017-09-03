@@ -25,6 +25,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def welcome
+    @users = User.all
+  end
+
   def destroy
     session.delete :user_id
     @current_user = nil

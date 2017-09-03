@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'cities#index'
+  root 'sessions#welcome'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
