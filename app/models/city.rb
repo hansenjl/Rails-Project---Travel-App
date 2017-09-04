@@ -39,7 +39,7 @@ class City < ApplicationRecord
       country = Country.find_by(id: countries[:id])
     end
     country.cities << self
-    country
+
   end
 
   def self.most_visited

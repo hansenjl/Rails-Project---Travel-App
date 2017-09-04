@@ -1,3 +1,4 @@
+require 'pry'
 class CitiesController < ApplicationController
   load_and_authorize_resource
 
@@ -11,9 +12,11 @@ class CitiesController < ApplicationController
   end
 
   def create
-    @city = City.new(city_params)
+    City.create(city_params)
     @countries = Country.all
-    if @city.save
+    @city = City.find_by(:name => params[:city][:name])
+    binding.pry
+    if @city.persisted?
       redirect_to cities_path
     else
       render 'cities/new'
