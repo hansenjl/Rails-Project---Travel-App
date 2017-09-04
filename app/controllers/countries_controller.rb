@@ -1,5 +1,7 @@
 class CountriesController < ApplicationController
   load_and_authorize_resource
+  before_action :set_country, only: [:show, :edit, :update]
+
   def new
     @country = Country.new
   end
@@ -14,11 +16,9 @@ class CountriesController < ApplicationController
   end
 
   def edit
-     @country = Country.find_by(id: params[:id])
   end
 
   def update
-     @country = Country.find_by(id: params[:id])
      @country.update(country_params)
      if @country.save
        redirect_to countries_path
@@ -28,7 +28,6 @@ class CountriesController < ApplicationController
   end
 
   def show
-    @country = Country.find_by(id: params[:id])
   end
 
   def index
@@ -48,5 +47,9 @@ class CountriesController < ApplicationController
 
   def country_params
     params.require(:country).permit(:name)
+  end
+
+  def set_country
+    @country = Country.find_by(id: params[:id])
   end
 end
