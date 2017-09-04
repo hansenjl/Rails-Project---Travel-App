@@ -1,4 +1,3 @@
-require 'pry'
 class CitiesController < ApplicationController
   load_and_authorize_resource
   before_action :set_city, only: [:show, :edit, :update]
@@ -15,7 +14,6 @@ class CitiesController < ApplicationController
     City.create(city_params)
     @countries = Country.all
     @city = City.find_by(:name => params[:city][:name])
-    binding.pry
     if @city.persisted?
       redirect_to cities_path
     else

@@ -1,4 +1,3 @@
-require 'pry'
 class SessionsController < ApplicationController
 
   def new
@@ -14,7 +13,6 @@ class SessionsController < ApplicationController
     @user.save
     session[:user_id] = @user.id
 
-    binding.pry
     redirect_to user_path(@user)
   end
 
