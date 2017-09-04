@@ -1,4 +1,4 @@
-<h1><%= @city.name %></h1>
+<h1><%= @city.name %>, <%= @city.country.name %></h1>
 
 <% if @city.visited? %>
   <h3>Visited <%= @city.times_visted %> times</h3>
