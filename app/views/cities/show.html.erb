@@ -1,7 +1,7 @@
 <h1><%= @city.name %>, <%= @city.country.name %></h1>
 
 <% if @city.visited? %>
-  <h3>Visited <%= @city.times_visted %> times</h3>
+  <h3>Visited <%= pluralize(@city.times_visited, "time")%> </h3>
   <h3>Overall Rating: <%= @city.overall_rating %></h3>
 <% end %>
 
