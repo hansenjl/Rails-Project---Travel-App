@@ -1,16 +1,20 @@
+require 'pry'
 class SessionsController < ApplicationController
 
   def new
   end
 
   def fbcreate
-    @user = User.find_or_create_by(id: auth['uid']) do |u|
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.username = auth['info']['email']
       u.password = auth['credentials']['token']
+      u.password_confirmation = auth['credentials']['token']
     end
-    session[:user_id] = @user.id
     @user.save
+    session[:user_id] = @user.id
+
+    binding.pry
     redirect_to user_path(@user)
   end
 
