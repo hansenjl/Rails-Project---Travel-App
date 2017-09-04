@@ -1,9 +1,9 @@
 require 'pry'
 class CitiesController < ApplicationController
   load_and_authorize_resource
+  before_action :set_city, only: [:show, :edit, :update]
 
   def show
-    @city = City.find_by(id: params[:id])
   end
 
   def new
@@ -28,11 +28,9 @@ class CitiesController < ApplicationController
   end
 
   def edit
-    @city = City.find_by(id: params[:id])
   end
 
   def update
-    @city = City.find_by(id: params[:id])
     @city.update(city_params)
     if @city.save
     redirect_to cities_path
@@ -42,6 +40,10 @@ class CitiesController < ApplicationController
   end
 
   private
+
+  def set_city
+     @city = City.find_by(id: params[:id])
+  end
 
   def city_params
     params.require(:city).permit(:name, country:[:id, :name])

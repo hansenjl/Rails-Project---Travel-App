@@ -11,7 +11,6 @@ class Ability
         can [:update, :create, :destroy], Visit, { user_id: user.id}
         can [:update, :destroy], User, { user_id: user.id}
         can [:update, :create], [City, Country]
-        can :destroy, City, :visits => nil
         can :destroy, Country, :cities => nil
 
     end
