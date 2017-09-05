@@ -1,3 +1,4 @@
+require 'pry'
 class City < ApplicationRecord
   has_many :visits
   has_many :users, through: :visits
@@ -38,6 +39,7 @@ class City < ApplicationRecord
     else
       country = Country.find_by(id: countries[:id])
     end
+    binding.pry
     country.cities << self
 
   end
