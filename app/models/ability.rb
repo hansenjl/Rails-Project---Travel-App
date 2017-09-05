@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
+    user ||= User.new
     can :read, :all
     can :create, User
     can :most_visited, Country
@@ -12,7 +12,6 @@ class Ability
         can [:update, :destroy], User, { user_id: user.id}
         can [:update, :create], [City, Country]
         can :destroy, Country, :cities => nil
-
     end
 
 
