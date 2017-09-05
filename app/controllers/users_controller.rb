@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :require_login
-  skip_before_action :require_login, only: [:new, :create]
   load_and_authorize_resource
 
   def new

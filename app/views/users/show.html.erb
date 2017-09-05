@@ -1,6 +1,7 @@
 <h1><%= @user.name%>'s Travel Log</h1>
-
-<%= link_to "Add a visit", new_user_visit_path(@user.id) %>
+<% if can? :create, Visit %>
+  <%= link_to "Add a visit", new_user_visit_path(@user.id) %>
+<% end %>
 
 <h2>Cities Visited:</h2>
 <ul>

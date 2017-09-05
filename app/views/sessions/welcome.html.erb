@@ -6,7 +6,6 @@
 <h3>Current Users:</h3>
 
 <% @users.each do |user| %>
-
   <h4><%= link_to user.name, user_path(user) %></h4>
   <label>Places <%= user.name %> visited:</label>
   <ul>
