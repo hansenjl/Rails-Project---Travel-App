@@ -1,5 +1,7 @@
 class VisitsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :user
+  load_and_authorize_resource :visit, through: :user
+
   def new
     @visit = Visit.new
     @cities = City.all

@@ -35,12 +35,14 @@ class City < ApplicationRecord
   def country=(countries)
     if !countries[:name].empty?
       country = Country.find_or_create_by(name: countries[:name])
+    elsif countries[:id].empty?
+      country = self.country
     else
       country = Country.find_by(id: countries[:id])
     end
     country.cities << self
-
   end
+
 
   def self.most_visited
     City.all.sort{ |a,b| b.times_visited <=> a.times_visited}.first
