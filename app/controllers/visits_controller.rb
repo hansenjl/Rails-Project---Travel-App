@@ -13,7 +13,7 @@ class VisitsController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @visit = Visit.new(visit_params)
     @visit.user_id = params[:user_id]
-    @visit.set_city(params[:visit][:city_attributes], @visit)
+    @visit.set_city(params[:visit][:city_attributes], @visit, @user)
     if @visit.save
       redirect_to user_visits_path(user_id: params[:user_id])
     else
