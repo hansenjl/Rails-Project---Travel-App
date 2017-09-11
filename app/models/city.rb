@@ -32,15 +32,9 @@ class City < ApplicationRecord
     end
   end
 
-  def country=(countries)
-    if !countries[:name].empty?
-      country = Country.find_or_create_by(name: countries[:name])
-    elsif countries[:id].empty?
-      country = self.country
-    else
-      country = Country.find_by(id: countries[:id])
-    end
-    country.cities << self
+  def country_field=(country_field)
+    country = Country.find_or_create_by(name: country_field[:name])
+    country.cities << self if !country.nil?
   end
 
 
