@@ -11,10 +11,9 @@ class CitiesController < ApplicationController
   end
 
   def create
-    City.create(city_params)
+    @city = City.create(city_params)
     @countries = Country.all
-    @city = City.find_by(:name => params[:city][:name])
-    if @city.persisted?
+    if @city.save
       redirect_to cities_path
     else
       render 'cities/new'

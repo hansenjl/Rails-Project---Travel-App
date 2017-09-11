@@ -1,19 +1,19 @@
-<% if @city.errors.any? %>
+<% if city.errors.any? %>
   <div id="error_explanation">
     <h2>
-      <%= pluralize(@city.errors.count, "error") %>
+      <%= pluralize(city.errors.count, "error") %>
       prohibited this visit from being saved:
     </h2>
 
     <ul>
-    <% @city.errors.full_messages.each do |msg| %>
+    <% city.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
 
-<%= form_for @city  do |f| %>
+<%= form_for city  do |f| %>
   City Name: <%= f.text_field :name %> <br><br>
 
   <%= f.fields_for :country do |country|%>
