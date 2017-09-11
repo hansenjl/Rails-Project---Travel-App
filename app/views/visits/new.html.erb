@@ -4,32 +4,34 @@
   <p><%= notice %></p>
 <% end %>
 
-<h4>Choose from a city below:</h4>
+<div>
+  <h4>Choose from a city below:</h4>
 
-<%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
-  <%= f.fields_for :city_attributes do |city_fields|%>
-    City Name: <%= city_fields.select(:city_id) do %>
-      <%= content_tag(:option)%>
-      <%= @cities.each do |c|%>
-        <%= content_tag(:option, "#{c.name}, #{c.country.name}", value: c.id)%>
-      <% end %>
-    <%end%>
+  <%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
+    <%= f.fields_for :city_attributes do |city_fields|%>
+      City Name: <%= city_fields.select(:city_id) do %>
+        <%= content_tag(:option)%>
+        <%= @cities.each do |c|%>
+          <%= content_tag(:option, "#{c.name}, #{c.country.name}", value: c.id)%>
+        <% end %>
+      <%end%>
+</div>
 
-
-
-<h4>Or enter a new city:</h4>
-
+<div>
+  <h4>Or enter a new city below:</h4>
 
   City Name: <%= city_fields.text_field :name %> <br><br>
-  Existing Country:  <%= city_fields.select(:country_id) do %>
+    Existing Country:  <%= city_fields.select(:country_id) do %>
       <%= content_tag(:option)%>
       <% @countries.each do |c|%>
         <%= content_tag(:option, c.name, value: c.id)%>
       <% end %>
     <% end %>
-  New Country: <%= city_fields.text_field :country %>
+    New Country: <%= city_fields.text_field :country %>
   <%end%>
-  <br><br>
+</div>
+
+  <br>
 
   <h4>Rate your visit:</h4>
   Rate your visit on a scale from 1-5 (5 being the best): <%= f.number_field :city_rating, min:1, max:5 %>
