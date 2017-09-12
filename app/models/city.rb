@@ -1,3 +1,4 @@
+require 'pry'
 class City < ApplicationRecord
   has_many :visits
   has_many :users, through: :visits
@@ -33,8 +34,10 @@ class City < ApplicationRecord
   end
 
   def country_field=(country_field)
-    country = Country.find_or_create_by(name: country_field[:name])
-    country.cities << self if !country.nil?
+    country = Country.find_by(name: country_field[:name])
+    country = Country.new(name: country_field[:name]) if country.nil?
+    country.save
+    self.country_id = country.id if !country.name.empty?
   end
 
 
