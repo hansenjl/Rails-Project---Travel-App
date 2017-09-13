@@ -2,7 +2,7 @@
 
 <% @visits.each do |visit| %>
 <ul>
-  <li><%= link_to visit.city.name, city_path(visit.city) %> | <%= link_to visit.city.country.name, country_path(visit.city.country)%> | <%= visit.city_rating %> stars</li>
-  <%= link_to "Delete", [@user,visit], method: :delete %>
+  <li><%= link_to visit.city.name, city_path(visit.city) %> | <%= link_to visit.city.country.name, country_path(visit.city.country)%> | <%= visit.city_rating %> stars
+  <%= link_to "Delete", [@user,visit], method: :delete %></li>
 </ul>
 <% end %>

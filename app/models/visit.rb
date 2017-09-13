@@ -10,7 +10,7 @@ class Visit < ApplicationRecord
     end
   end
 
-  def city_attributes(city_attributes)
+  def city_attributes=(city_attributes)
     if !city_attributes[:name].empty?
       city = City.find_or_create_by(name: city_attributes[:name])
       if !city_attributes[:country].empty?
@@ -21,8 +21,7 @@ class Visit < ApplicationRecord
       end
       country.cities << city if !city.nil? && !country.nil?
       country.save
+      self.city_id = city.id
     end
-    city.visits << self
-    city.save
   end
 end
