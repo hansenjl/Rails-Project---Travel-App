@@ -15,7 +15,6 @@ class Visit < ApplicationRecord
       city = City.find_or_create_by(name: city_attributes[:name])
       if !city_attributes[:country].empty?
         country = Country.find_or_create_by(name: city_attributes[:country])
-        city_attributes[:country_id] = country.id
       else
         country = Country.find_by(id: city_attributes[:country_id])
       end
