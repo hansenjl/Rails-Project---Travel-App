@@ -5,7 +5,7 @@ class Visit < ApplicationRecord
   validate :not_a_repeat
 
   def not_a_repeat
-    if Visit.where(user_id: user_id, city_id: city_id).count > 1
+    if Visit.where(user_id: user_id, city_id: city_id).count > 0
       errors.add(:city_id, "You have already entered this visit")
     end
   end
