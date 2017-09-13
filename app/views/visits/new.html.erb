@@ -10,7 +10,7 @@
   <%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
 
-    City Name: <%= f.collection_select(:city_id, City.all, :id, :name, {inclue_blank:true})  %>
+    City Name: <%= f.collection_select(:city_id, City.all, :id, :name_with_country, {inclue_blank:true})  %>
 </div>
 
 <div>

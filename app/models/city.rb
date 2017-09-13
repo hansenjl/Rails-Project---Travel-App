@@ -20,6 +20,10 @@ class City < ApplicationRecord
     total
   end
 
+  def name_with_country
+    "#{self.name}, #{self.country.name}"
+  end
+
   def times_visited
     self.visits.count
   end
