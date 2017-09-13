@@ -9,18 +9,13 @@
 
   <%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.fields_for :city_attributes do |city_fields|%>
-      City Name: <%= city_fields.select(:city_id) do %>
-        <%= content_tag(:option)%>
-        <%= @cities.each do |c|%>
-          <%= content_tag(:option, "#{c.name}, #{c.country.name}", value: c.id)%>
-        <% end %>
-      <%end%>
+
+    City Name: <%= f.collection_select(:city_id, City.all, :id, :name, {inclue_blank:true})  %>
 </div>
 
 <div>
   <h4>Or enter a new city below:</h4>
-
+  <%= f.fields_for :city_attributes do |city_fields|%>
   City Name: <%= city_fields.text_field :name %> <br><br>
     Existing Country:  <%= city_fields.select(:country_id) do %>
       <%= content_tag(:option)%>
