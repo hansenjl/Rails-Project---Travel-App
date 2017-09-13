@@ -35,6 +35,6 @@ class VisitsController < ApplicationController
   private
 
   def visit_params
-    params.require(:visit).permit(:city_rating, :city_attributes)
+    params.require(:visit).permit(:user_id, :city_id, :city_rating, :city_attributes)
   end
 end

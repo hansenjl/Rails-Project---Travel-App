@@ -8,6 +8,7 @@
   <h4>Choose from a city below:</h4>
 
   <%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.fields_for :city_attributes do |city_fields|%>
       City Name: <%= city_fields.select(:city_id) do %>
         <%= content_tag(:option)%>
