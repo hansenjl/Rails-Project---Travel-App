@@ -5,14 +5,11 @@ class VisitsController < ApplicationController
 
   def new
     @visit = Visit.new
-    @cities = City.all
-    @countries = Country.all
   end
 
   def create
     @visit = Visit.new(visit_params)
     binding.pry
-    @visit.set_city(params[:visit][:city_attributes], @visit, @user)
     if @visit.save
       redirect_to user_visits_path(user_id: @user.id)
       #potentially could change to just @user
@@ -38,6 +35,6 @@ class VisitsController < ApplicationController
   end
 
   def visit_params
-    params.require(:visit).permit(:user_id, :city_id, :city_rating, :city_attributes)
+    params.require(:visit).permit(:user_id, :city_id, :city_rating, city_attributes:[:name,:country_id,:country])
   end
 end

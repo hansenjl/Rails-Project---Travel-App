@@ -10,24 +10,19 @@ class Visit < ApplicationRecord
     end
   end
 
-  def set_city(city_attributes, visit, user)
+  def city_attributes(city_attributes)
     if !city_attributes[:name].empty?
       city = City.find_or_create_by(name: city_attributes[:name])
-      city_attributes[:city_id] = city.id
       if !city_attributes[:country].empty?
         country = Country.find_or_create_by(name: city_attributes[:country])
         city_attributes[:country_id] = country.id
       else
         country = Country.find_by(id: city_attributes[:country_id])
       end
-        country.cities << city if !city.nil? && !country.nil?
-        country.save
-    else
-      city = City.find_by(id: city_attributes[:city_id])
+      country.cities << city if !city.nil? && !country.nil?
+      country.save
     end
-    if !city.nil? && !city.country.nil? && Visit.find_by(city_id: city.id, user_id: user.id ).nil?
-      city.visits << visit
-      city.save
-    end
+    city.visits << self
+    city.save
   end
 end

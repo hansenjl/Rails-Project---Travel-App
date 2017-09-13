@@ -17,12 +17,7 @@
   <h4>Or enter a new city below:</h4>
   <%= f.fields_for :city_attributes do |city_fields|%>
   City Name: <%= city_fields.text_field :name %> <br><br>
-    Existing Country:  <%= city_fields.select(:country_id) do %>
-      <%= content_tag(:option)%>
-      <% @countries.each do |c|%>
-        <%= content_tag(:option, c.name, value: c.id)%>
-      <% end %>
-    <% end %>
+    Existing Country:  <%= city_fields.collection_select(:country_id, Country.all, :id, :name, {inclue_blank:true}) %>
     New Country: <%= city_fields.text_field :country %>
   <%end%>
 </div>
