@@ -9,10 +9,8 @@ class VisitsController < ApplicationController
 
   def create
     @visit = Visit.new(visit_params)
-    binding.pry
     if @visit.save
-      redirect_to user_visits_path(user_id: @user.id)
-      #potentially could change to just @user
+      redirect_to user_visits_path(@user)
     else
       flash[:notice] = 'Visit was not saved. You cannot record the same visit twice and each visit must include a city, country, and rating.'
       redirect_to new_user_visit_url
