@@ -1,17 +1,17 @@
 <nav>
-  <%= link_to "Home", root_path %>
+  <%= link_to "Home", root_path, :class => "btn btn-primary" %>
   <% if current_user.nil? %>
-    <%= link_to "Log In", login_path %>
-    <%= link_to "Sign Up", signup_path %>
+    <%= link_to "Log In", login_path, :class => "btn btn-primary" %>
+    <%= link_to "Sign Up", signup_path, :class => "btn btn-primary" %>
   <% else %>
-    <%= link_to "#{current_user.name}'s Travel Log", user_path(current_user) %>
-    <%= link_to "Add a Visit", new_user_visit_path(current_user) %>
-    <%= link_to "View Countries", countries_path %>
-    <%= link_to "New Country", new_country_path %>
-    <%= link_to "View Cities", cities_path %>
-    <%= link_to "New City", new_city_path %>
-    <%= link_to "Most Visited Country", countries_most_visited_path %>
+    <%= link_to "#{current_user.name}'s Travel Log", user_path(current_user), :class => "btn btn-primary" %>
+    <%= link_to "Add a Visit", new_user_visit_path(current_user), :class => "btn btn-primary" %>
+    <%= link_to "View Countries", countries_path, :class => "btn btn-primary" %>
+    <%= link_to "New Country", new_country_path, :class => "btn btn-primary" %>
+    <%= link_to "View Cities", cities_path, :class => "btn btn-primary" %>
+    <%= link_to "New City", new_city_path, :class => "btn btn-primary" %>
+    <%= link_to "Most Visited Country", countries_most_visited_path, :class => "btn btn-primary" %>
 
-    <%= link_to "Log Out", logout_path, method: 'delete' %>
+    <%= link_to "Log Out", logout_path, method: 'delete', :class => "btn btn-primary" %>
   <% end %>
 </nav>

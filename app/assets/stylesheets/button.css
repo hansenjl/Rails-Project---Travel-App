@@ -1,0 +1,33 @@
+.btn{
+  cursor: pointer;
+  font-weight:500;
+  display: inline-block;
+  line-height: 1.125rem;
+  padding: .5rem 1rem;
+  margin: 0;
+  height: auto;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  text-align: center;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0074d9 ;
+  border-radius: 3px;
+}
+
+.btn-primary:hover {
+  background-color: #7fdbff ;
+}
+
+.btn-primary:active {
+  background-color: #f012be;
+}
+
+.btn-primary:disabled,
+.btn-primary.is-disabled {
+  opacity: .5;
+}
