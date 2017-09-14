@@ -1,5 +1,9 @@
 <h1>Welcome to Travel Tracker!</h1>
 
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+
 <h3>Most visited city: <%= City.most_visited.name %> | <%= City.most_visited.times_visited %> visits</h3>
 <h3>Highest ranked city: <%= City.most_popular.name %> | <%= City.most_popular.overall_rating %> stars </h3>
 
