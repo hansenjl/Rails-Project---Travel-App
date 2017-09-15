@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
 
-    can :read, [City, Country, User, Session]
+    can :read, [City, Country, User]
     can :create, User
     can :most_visited, Country
 
