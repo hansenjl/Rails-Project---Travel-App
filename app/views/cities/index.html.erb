@@ -3,6 +3,8 @@
 <% end %>
 
 <h2>All Cities:</h2>
+<%= page_entries_info @cities%>
+<%= paginate @cities%>
 <ul>
 <% @cities.each do |city|%>
   <% if city.visited? %>
