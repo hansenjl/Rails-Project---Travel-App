@@ -6,7 +6,7 @@
   <ul class="visited-by">
     <% @city.visits.each do |visit| %>
     <%= image_tag visit.avatar.url(:thumb)%>
-    <li><%= visit.user.name%> rates it <%= visit.city_rating%> stars</li>
+    <li><%= visit.user.username%> rates it <%= visit.city_rating%> stars</li>
     <% end %>
   </ul>
 <% else %>

@@ -48,10 +48,12 @@ function previousCity(){
       ratingText = "Overall Rating: " + calcRating(visits)
     }
 
+    console.log(data)
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
     $(".js-previous").attr("data-id", data["id"])
     $(".js-next").attr("data-id", data["id"])
+    $(".visited-by").html()
   })
 }
 
