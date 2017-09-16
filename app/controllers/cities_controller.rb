@@ -22,8 +22,7 @@ class CitiesController < ApplicationController
   end
 
   def index
-    #@cities = City.all.sort{|a,b|b.visits.count <=> a.visits.count}
-    @cities = City.order(created_at: :desc).page(params[:page])
+    @cities = City.all.sort{|a,b|b.visits.count <=> a.visits.count}
   end
 
   def edit
