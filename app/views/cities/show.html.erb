@@ -1,8 +1,17 @@
 <h1><%= @city.name %>, <%= @city.country.name %></h1>
 
 <% if @city.visited? %>
-  <h3>Visited <%= pluralize(@city.times_visited, "time")%> </h3>
-  <h3>Overall Rating: <%= @city.overall_rating %></h3>
+  <h3 class="visits">Visited <%= pluralize(@city.times_visited, "time")%> </h3>
+  <h3 class="rating">Overall Rating: <%= @city.overall_rating %></h3>
 <% end %>
 
+<% if @city != City.first %>
+<a href="#" class="js-previous" data-id="<%=@city.id%>" onclick="previousCity()"><-- Previous City</a>
+<%end%>
+
 <%= link_to "Edit", edit_city_path(@city)%>
+
+<% if @city != City.last %>
+<a href="#" class="js-next" data-id="<%=@city.id%>" onclick="nextCity()">Next City --></a>
+<%end%>
+
