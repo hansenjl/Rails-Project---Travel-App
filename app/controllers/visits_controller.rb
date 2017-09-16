@@ -33,6 +33,6 @@ class VisitsController < ApplicationController
   end
 
   def visit_params
-    params.require(:visit).permit(:user_id, :city_id, :city_rating, city_attributes:[:name,:country_id,:country])
+    params.require(:visit).permit(:user_id, :city_id, :city_rating, :avatar, city_attributes:[:name,:country_id,:country])
   end
 end

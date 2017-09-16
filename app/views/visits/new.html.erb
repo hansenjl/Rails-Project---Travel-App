@@ -5,7 +5,7 @@
 <% end %>
 </div>
 
-<%= form_for @visit, url: "/users/#{@user.id}/visits" do |f| %>
+<%= form_for @visit, url: "/users/#{@user.id}/visits", html: {multipart: true} do |f| %>
 <div class="clearfix ">
   <div class="left  ml2 p2 col-4">
     <h3>Choose from a city below:</h3>
@@ -27,6 +27,11 @@
   <div class="ml2 p2 border-top">
     <h3>Rate your visit:</h3>
     Rate your visit on a scale from 1-5 (5 being the best): <%= f.number_field :city_rating, min:1, max:5 %>
+
+    <br></br>
+
+    <h3>Upload a picture from your visit:</h3>
+     <%= f.file_field :avatar  %>
 
     <br></br>
   <%= f.submit "Save" %>
