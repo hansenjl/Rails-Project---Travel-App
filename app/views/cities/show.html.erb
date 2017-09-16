@@ -8,11 +8,14 @@
   <h3 class="rating">Overall Rating: N/A</h3>
 <% end %>
 
+<%= link_to "Edit", edit_city_path(@city)%>
+
+<br>
 <% if @city != City.first %>
 <button class="js-previous" data-id="<%=@city.id%>" ><-- Previous City</button>
 <%end%>
 
-<%= link_to "Edit", edit_city_path(@city)%>
+
 
 <% if @city != City.last %>
 <button class="js-next" data-id="<%=@city.id%>">Next City --></button>
