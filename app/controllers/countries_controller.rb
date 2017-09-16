@@ -28,10 +28,18 @@ class CountriesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @country}
+    end
   end
 
   def index
     @countries = Country.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @countries}
+    end
   end
 
   def destroy
