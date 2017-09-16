@@ -16,6 +16,7 @@ function nextCity() {
 
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
+    $(".js-next").attr("data-id", data["id"])
   })
 }
 
