@@ -5,7 +5,7 @@
     <li>
       <%= link_to country.name, country_path(country)%>
       <%= link_to "| Delete", country, method: :delete if can? :destroy, @country %>
-      <button class="js-more" data-id="<%=country.id%>" onclick="moreCountry(this)">Show Cities</button>
+      <button id="more-<%=country.id%>-country" class="js-more" data-id="<%=country.id%>" onclick="moreCountry(this)">Show Cities</button>
       <ul id="country-<%=country.id%>">
 
       </ul>

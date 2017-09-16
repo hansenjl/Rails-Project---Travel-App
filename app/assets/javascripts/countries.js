@@ -9,7 +9,14 @@ function moreCountry(element) {
       cityList = cityList + "<li>" + cities[i]["name"] + "</li>"
     }
     $("#country-" + id).html(cityList)
+
   })
 
+  $("#more-" + id + "-country").replaceWith(`<button id="hide-${id}-country" class="js-hide" data-id="${id}" onclick="hideCountry(this)">Hide Cities</button>`)
+}
 
+function hideCountry(element){
+  var id = element.dataset.id
+  $("#country-"+id).html("")
+  $(`#hide-${id}-country`).replaceWith(`<button id="more-${id}-country" class="js-more" data-id="'" + id + "'" onclick="moreCountry(this)">Show Cities</button>`)
 }
