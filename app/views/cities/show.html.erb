@@ -9,12 +9,12 @@
 <% end %>
 
 <% if @city != City.first %>
-<a href="#" class="js-previous" data-id="<%=@city.id%>" onclick="previousCity(); return false;"><-- Previous City</a>
+<button class="js-previous" data-id="<%=@city.id%>" ><-- Previous City</button>
 <%end%>
 
 <%= link_to "Edit", edit_city_path(@city)%>
 
 <% if @city != City.last %>
-<a href="#" class="js-next" data-id="<%=@city.id%>" onclick="nextCity();return false;">Next City --></a>
+<button class="js-next" data-id="<%=@city.id%>">Next City --></button>
 <%end%>
 

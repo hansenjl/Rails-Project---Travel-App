@@ -17,8 +17,10 @@ function nextCity() {
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
     $(".js-next").attr("data-id", data["id"])
+    $(".js-previous").attr("data-id", data["id"])
   })
 }
+
 
 
 function calcRating(visits) {
@@ -31,7 +33,7 @@ function calcRating(visits) {
 
 
 function previousCity(){
-  var prevId = parseInt($(".js-next").attr("data-id")) - 1
+  var prevId = parseInt($(".js-previous").attr("data-id")) - 1
   $.get("/cities/" + prevId + ".json", function(data){
 
     $("h1").text(data["name"]+ ", " + data["country"]["name"])
@@ -48,6 +50,14 @@ function previousCity(){
 
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
+    $(".js-previous").attr("data-id", data["id"])
     $(".js-next").attr("data-id", data["id"])
   })
 }
+
+function attachListeners(){
+  $(".js-next").click(nextCity)
+  $(".js-previous").click(previousCity)
+}
+
+$(document).ready(attachListeners)
