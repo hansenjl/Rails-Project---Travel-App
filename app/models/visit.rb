@@ -2,7 +2,7 @@ class Visit < ApplicationRecord
   belongs_to :user
   belongs_to :city
   has_attached_file :avatar, default_url: ':style/default.png', styles: { thumb: "100x100>" }
-  validates_attachement_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates :city_rating, presence: true
   validate :not_a_repeat
 
