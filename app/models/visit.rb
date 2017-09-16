@@ -6,6 +6,10 @@ class Visit < ApplicationRecord
   validates :city_rating, presence: true
   validate :not_a_repeat
 
+  def avatar_url
+    avatar.url(:thumb)
+  end
+
   def not_a_repeat
     if Visit.where(user_id: user_id, city_id: city_id).count > 0
       errors.add(:city_id, "You have already entered this visit")

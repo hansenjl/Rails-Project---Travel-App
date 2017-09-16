@@ -48,13 +48,25 @@ function previousCity(){
       ratingText = "Overall Rating: " + calcRating(visits)
     }
 
+    var userVisitText = formatUserVisits(visits, data["users"])
+
     console.log(data)
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
     $(".js-previous").attr("data-id", data["id"])
     $(".js-next").attr("data-id", data["id"])
-    $(".visited-by").html()
+    $(".visited-by").html(userVisitText)
+    console.log(userVisitText)
+
   })
+}
+
+function formatUserVisits(visits, users){
+  var userVisitString = ""
+  for (var i = 0; i < visits.length; i++) {
+    userVisitString += '<img src="' + '/assets/' + visits[i]["avatar_url"] + '">' + '<li>' + users[i]["username"]  +' rates it ' + visits[i]["city_rating"]  + ' stars</li>'
+  }
+  return userVisitString
 }
 
 function attachListeners(){
