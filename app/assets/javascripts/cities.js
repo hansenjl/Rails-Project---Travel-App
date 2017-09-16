@@ -10,7 +10,7 @@ function nextCity() {
       visitText = "Visited 1 time"
       ratingText = "Overall Rating: " + visits[0]["city_rating"]
     } else if (visits.length > 1){
-      visitText = "Visited " + visits.length +" time"
+      visitText = "Visited " + visits.length +" times"
       ratingText = "Overall Rating: " + calcRating(visits)
     }
 
@@ -31,5 +31,23 @@ function calcRating(visits) {
 
 
 function previousCity(){
+  var prevId = parseInt($(".js-next").attr("data-id")) - 1
+  $.get("/cities/" + prevId + ".json", function(data){
 
+    $("h1").text(data["name"]+ ", " + data["country"]["name"])
+    var visits = data["visits"]
+    var visitText = "Visited 0 times"
+    var ratingText = "Rating: N/A"
+    if(visits.length === 1){
+      visitText = "Visited 1 time"
+      ratingText = "Overall Rating: " + visits[0]["city_rating"]
+    } else if (visits.length > 1){
+      visitText = "Visited " + visits.length +" times"
+      ratingText = "Overall Rating: " + calcRating(visits)
+    }
+
+    $("h3.visits").text(visitText)
+    $("h3.rating").text(ratingText)
+    $(".js-next").attr("data-id", data["id"])
+  })
 }

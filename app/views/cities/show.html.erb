@@ -3,6 +3,9 @@
 <% if @city.visited? %>
   <h3 class="visits">Visited <%= pluralize(@city.times_visited, "time")%> </h3>
   <h3 class="rating">Overall Rating: <%= @city.overall_rating %></h3>
+<% else %>
+<h3 class="visits">Visited 0 times</h3>
+  <h3 class="rating">Overall Rating: N/A</h3>
 <% end %>
 
 <% if @city != City.first %>
