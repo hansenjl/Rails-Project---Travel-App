@@ -1,6 +1,8 @@
 class Visit < ApplicationRecord
   belongs_to :user
   belongs_to :city
+  has_attached_file :avatar
+  validates_attachement_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates :city_rating, presence: true
   validate :not_a_repeat
 
