@@ -14,10 +14,13 @@ function nextCity() {
       ratingText = "Overall Rating: " + calcRating(visits)
     }
 
+    var userVisitText = formatUserVisits(visits, data["users"])
+
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
     $(".js-next").attr("data-id", data["id"])
     $(".js-previous").attr("data-id", data["id"])
+    $(".visited-by").html(userVisitText)
   })
 }
 
@@ -50,13 +53,13 @@ function previousCity(){
 
     var userVisitText = formatUserVisits(visits, data["users"])
 
-    console.log(data)
+
     $("h3.visits").text(visitText)
     $("h3.rating").text(ratingText)
     $(".js-previous").attr("data-id", data["id"])
     $(".js-next").attr("data-id", data["id"])
     $(".visited-by").html(userVisitText)
-    console.log(userVisitText)
+
 
   })
 }
