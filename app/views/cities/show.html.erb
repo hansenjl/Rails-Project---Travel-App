@@ -3,9 +3,16 @@
 <% if @city.visited? %>
   <h3 class="visits">Visited <%= pluralize(@city.times_visited, "time")%> </h3>
   <h3 class="rating">Overall Rating: <%= @city.overall_rating %></h3>
+  <ul class="visited-by">
+    <% @city.visits.each do |visit| %>
+    <%= image_tag visit.avatar.url(:thumb)%>
+    <li><%= visit.user.name%> rates it <%= visit.city_rating%> stars</li>
+    <% end %>
+  </ul>
 <% else %>
-<h3 class="visits">Visited 0 times</h3>
+  <h3 class="visits">Visited 0 times</h3>
   <h3 class="rating">Overall Rating: N/A</h3>
+  <ul class="visited-by"></ul>
 <% end %>
 
 <%= link_to "Edit", edit_city_path(@city)%>
