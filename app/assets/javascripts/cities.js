@@ -57,6 +57,19 @@ function formatUserVisits(visits, users){
 function attachListeners(){
   $(".js-next").click(nextCity)
   $(".js-previous").click(previousCity)
+  $('form').submit(function(event){
+    event.preventDefault()
+    createComment(this)
+  })
+}
+
+function createComment(element){
+  var values = $(element).serialize()
+  var posting = $.post('/comments', values)
+
+  posting.done(function(data){
+    //actions
+  })
 }
 
 
