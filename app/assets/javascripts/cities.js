@@ -86,12 +86,13 @@ function createComment(element){
   var posting = $.post('/comments', values)
 
   posting.done(function(data){
-    var username = data["user"]["username"]
-    var text = data["text"]
+
+    // create a new comment object
+    var comment = new Comment(data["text"], data["user"]["username"], data["city"]["name"])
 
     // add new comment
-    var comment = `<li><strong>${username}: </strong>${text}</li>`
-    $("#comments").append(comment)
+    $("#comments").append(comment.formatComment())
+
     //reset comment form
     $("#submit").prop( "disabled", false )
     $("#comment_text").val("")
