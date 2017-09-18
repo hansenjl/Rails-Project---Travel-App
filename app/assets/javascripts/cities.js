@@ -59,4 +59,5 @@ function attachListeners(){
   $(".js-previous").click(previousCity)
 }
 
-$(document).ready(attachListeners)
+//$(document).ready(attachListeners)
+document.addEventListener("turbolinks:load", attachListeners)
