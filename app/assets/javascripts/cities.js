@@ -68,7 +68,11 @@ function createComment(element){
   var posting = $.post('/comments', values)
 
   posting.done(function(data){
-    //actions
+    var username = data["user"]["username"]
+    var text = data["text"]
+
+    var comment = `<li><strong>${username}: </strong>${text}</li>`
+    $("#comments").append(comment)
   })
 }
 
