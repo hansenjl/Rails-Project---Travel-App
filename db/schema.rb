@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916220240) do
+ActiveRecord::Schema.define(version: 20170918153839) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments_tables", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "city_id"
+    t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
