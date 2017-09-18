@@ -88,8 +88,10 @@ function createComment(element){
     var username = data["user"]["username"]
     var text = data["text"]
 
+    // add new comment
     var comment = `<li><strong>${username}: </strong>${text}</li>`
     $("#comments").append(comment)
+    //reset comment form
     $("#submit").prop( "disabled", false )
     $("#comment_text").val("")
   })
