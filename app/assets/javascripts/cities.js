@@ -42,7 +42,8 @@ function updateView(showId){
 function formatCommentList(comments){
   let commentText = ""
   for (var i = 0; i < comments.length; i++) {
-    commentText += "<li><strong>" + comments[i]["user"]["username"] + ": </strong>" + comments[i]["text"] + "</li>"
+    let com = new Comment(comments[i]["text"],comments[i]["user"]["username"],comments[i]["city"]["name"])
+    commentText += com.formatComment()
   }
   return commentText
 }
@@ -99,5 +100,14 @@ function createComment(element){
 
 }
 
+function Comment(text,username,city){
+  this.text = text
+  this.username = username
+  this.city = city
+}
+
+Comment.prototype.formatComment = function(){
+    return "<li><strong>" + this.username + ": </strong>" + this.text + "</li>"
+  }
 
 document.addEventListener("turbolinks:load", attachListeners)
