@@ -4,7 +4,7 @@
     <%= link_to "Log In", login_path, :class => "btn btn-primary" %>
     <%= link_to "Sign Up", signup_path, :class => "btn btn-primary" %>
   <% else %>
-    <%= link_to "#{current_user.name}'s Travel Log", user_path(current_user), :class => "btn btn-primary" %>
+    <%= link_to "#{current_user.name}'s Travel Log", user_visits_path(current_user), :class => "btn btn-primary" %>
     <%= link_to "Add a Visit", new_user_visit_path(current_user), :class => "btn btn-primary" %>
     <%= link_to "View Countries", countries_path, :class => "btn btn-primary" %>
     <%= link_to "New Country", new_country_path, :class => "btn btn-primary" %>
