@@ -90,11 +90,11 @@ function createComment(element){
 
     var comment = `<li><strong>${username}: </strong>${text}</li>`
     $("#comments").append(comment)
-    $("#submit").disabled = false
+    $("#submit").prop( "disabled", false )
+    $("#comment_text").val("")
   })
 
 
-  //need to reset submit button
 }
 
 
