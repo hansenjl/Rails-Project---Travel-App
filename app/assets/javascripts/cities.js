@@ -42,7 +42,7 @@ function updateView(showId){
 function formatCommentList(comments){
   let commentText = ""
   for (var i = 0; i < comments.length; i++) {
-    let com = new Comment(comments[i]["text"],comments[i]["user"]["username"],comments[i]["city"]["name"])
+    let com = new Comment(comments[i]["id"],comments[i]["text"],comments[i]["user"]["username"],comments[i]["city"]["name"])
     commentText += com.formatComment()
   }
   return commentText
@@ -78,7 +78,34 @@ function attachListeners(){
       event.preventDefault()
       createComment(this)
     })
+    $(".edit-comment").click(function(event){
+      event.preventDefault
+      editComment(this)
+    })
+    $(".delete-comment").click(function(event){
+      event.preventDefault
+      deleteComment(this)
+    })
   }
+}
+
+function editComment(element){
+  var commentId = element.attributes["data"].value
+  console.log(commentId)
+}
+
+function deleteComment(element){
+  var commentId = element.attributes["data"].value
+
+  $.ajax({
+    url: '/comments/' + commentId,
+    type: 'DELETE',
+    success: function(result){
+      $("#comment-"+result["id"]).replaceWith("")
+    }
+  })
+
+
 }
 
 function createComment(element){
@@ -88,7 +115,7 @@ function createComment(element){
   posting.done(function(data){
 
     // create a new comment object
-    var comment = new Comment(data["text"], data["user"]["username"], data["city"]["name"])
+    var comment = new Comment(data["id"], data["text"], data["user"]["username"], data["city"]["name"])
 
     // add new comment
     $("#comments").append(comment.formatComment())
@@ -96,19 +123,21 @@ function createComment(element){
     //reset comment form
     $("#submit").prop( "disabled", false )
     $("#comment_text").val("")
+
+
+
   })
-
-
 }
 
-function Comment(text,username,city){
+function Comment(id,text,username,city){
+  this.id = id
   this.text = text
   this.username = username
   this.city = city
 }
 
 Comment.prototype.formatComment = function(){
-    return "<li><strong>" + this.username + ": </strong>" + this.text + "</li>"
+    return "<li id='comment-"+ this.id +"'><strong>" + this.username + ": </strong>" + this.text + " <button class='edit-comment' data='"+ this.id +"'>Edit</button> <button class='delete-comment' data='" + this.id + "'>Delete</button></li>"
   }
 
 document.addEventListener("turbolinks:load", attachListeners)

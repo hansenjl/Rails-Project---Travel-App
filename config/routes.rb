@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   get 'countries/most_visited' => 'countries#most_visited'
-  post '/comments' => 'comments#create'
 
   get '/auth/facebook/callback' => 'sessions#fbcreate'
 
   resources :countries
   resources :cities
-
+  resources :comments, only: [:create, :update, :destroy]
   resources :users  do
     resources :visits
   end

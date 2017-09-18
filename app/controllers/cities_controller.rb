@@ -4,6 +4,7 @@ class CitiesController < ApplicationController
 
 
   def show
+    @comment = Comment.new
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @city}
