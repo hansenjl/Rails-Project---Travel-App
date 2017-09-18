@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170918153839) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments_tables", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "city_id"
     t.string "text"
