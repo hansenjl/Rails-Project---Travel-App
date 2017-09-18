@@ -3,4 +3,5 @@ class CitySerializer < ActiveModel::Serializer
   belongs_to :country
   has_many :users
   has_many :visits
+  has_many :comments
 end

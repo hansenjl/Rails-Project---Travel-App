@@ -1,7 +1,7 @@
 class City < ApplicationRecord
   has_many :visits
   has_many :users, through: :visits
-  has_many :reviews
+  has_many :comments
   belongs_to :country
   validates :name, presence: true, uniqueness: true
   validates :country_id, presence: true
