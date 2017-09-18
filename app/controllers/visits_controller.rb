@@ -3,6 +3,7 @@ class VisitsController < ApplicationController
   load_and_authorize_resource :visit, through: :user
   before_action :set_user, only: [:new, :index, :create, :destroy]
 
+
   def new
     @visit = Visit.new
   end
@@ -17,12 +18,13 @@ class VisitsController < ApplicationController
     end
   end
 
+
   def index
     @visits = @user.visits.all
   end
 
   def destroy
-    Visit.find(params[:id]).destroy
+    Visit.find_by(id: params[:id]).destroy
     redirect_to user_visits_path
   end
 
@@ -31,6 +33,8 @@ class VisitsController < ApplicationController
   def set_user
     @user = User.find_by(id: params[:user_id])
   end
+
+
 
   def visit_params
     params.require(:visit).permit(:user_id, :city_id, :city_rating, :avatar, city_attributes:[:name,:country_id,:country])

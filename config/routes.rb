@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :countries
   resources :cities
+
   resources :users  do
     resources :visits
   end
