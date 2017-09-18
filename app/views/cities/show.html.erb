@@ -35,7 +35,6 @@
       <li id="comment-<%=comment.id%>">
       <strong><%= comment.user.username%>: </strong><%= comment.text%>
       <%if current_user == comment.user%>
-      <button class="edit-comment" data="<%=comment.id%>" >Edit</button>
       <button class="delete-comment" data="<%=comment.id%>">Delete</button>
       <%end%>
       </li>

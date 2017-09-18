@@ -78,10 +78,6 @@ function attachListeners(){
       event.preventDefault()
       createComment(this)
     })
-    $(".edit-comment").click(function(event){
-      event.preventDefault
-      editComment(this)
-    })
     $(".delete-comment").click(function(event){
       event.preventDefault
       deleteComment(this)
@@ -90,12 +86,6 @@ function attachListeners(){
   }
 }
 
-
-
-function editComment(element){
-  var commentId = element.attributes["data"].value
-  console.log(commentId)
-}
 
 function deleteComment(element){
   var commentId = element.attributes["data"].value
@@ -138,7 +128,7 @@ function Comment(id,text,username,city){
 }
 
 Comment.prototype.formatComment = function(){
-    return "<li id='comment-"+ this.id +"'><strong>" + this.username + ": </strong>" + this.text + " <button class='edit-comment' data='"+ this.id +"'>Edit</button> <button class='delete-comment' data='" + this.id + "' onclick='deleteComment(this)''>Delete</button></li>"
+    return "<li id='comment-"+ this.id +"'><strong>" + this.username + ": </strong>" + this.text + " <button class='delete-comment' data='" + this.id + "' onclick='deleteComment(this)'>Delete</button></li>"
   }
 
 document.addEventListener("turbolinks:load", attachListeners)
