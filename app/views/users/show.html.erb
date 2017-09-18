@@ -3,17 +3,22 @@
   <%= link_to "Add a visit to your travel log", new_user_visit_path(current_user) %>
 <% end %>
 
-<h2>Cities Visited:</h2>
-<ul>
-  <% @user.cities.each do |city|%>
-    <li><%=link_to city.name, city_path(city) %> | My Rating: <%= city.visits.find_by(user_id: @user.id).city_rating %> stars | Overall Rating: <%=city.overall_rating%> stars</li>
-  <% end %>
-</ul>
-
 
 <h2>Countries Visited:</h2>
 <ul>
   <% @user.countries_visited.each do |country|%>
-    <li><%=link_to country.name, country_path(country) %> </li>
+    <li class="h3"><%=link_to country.name, country_path(country) %> </li><br>
+    <ul>
+      <% country.cities.each do |city|%>
+        <% if @user.cities.include?(city)%>
+        <li>
+        <%= image_tag city.visits.find_by(user_id: @user.id).avatar.url(:thumb)%>
+        <%=link_to city.name, city_path(city) %> |
+        <%=@user.name%>'s Rating: <strong><%= city.visits.find_by(user_id: @user.id).city_rating %> stars </strong>|
+        Overall Rating: <strong><%=city.overall_rating%> stars</strong>
+        </li><br>
+        <% end %>
+      <% end %>
+    </ul><br>
   <% end %>
 </ul>
