@@ -29,7 +29,9 @@
 <div class="comments">
   <h2>Comments:</h2>
   <ul id="comments">
-
+    <% @city.comments.each do |comment|%>
+      <li><strong><%= comment.user.username%>: </strong><% comment.text%></li>
+    <% end %>
   </ul>
 
 
