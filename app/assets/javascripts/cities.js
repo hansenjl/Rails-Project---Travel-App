@@ -45,7 +45,11 @@ function calcRating(visits) {
 function formatUserVisits(visits, users){
   var userVisitString = ""
   for (var i = 0; i < visits.length; i++) {
-    userVisitString += '<img src="' + '/assets/' + visits[i]["avatar_url"] + '">' + '<li>' + users[i]["username"]  +' rates it ' + visits[i]["city_rating"]  + ' out of 5 stars</li>'
+    if(visits[i]["avatar_url"].includes("default")){
+      userVisitString += '<img src="' + '/assets/' + visits[i]["avatar_url"] + '">' + '<li>' + users[i]["username"]  +' rates it ' + visits[i]["city_rating"]  + ' out of 5 stars</li>'
+    } else {
+    userVisitString += '<img src="' + visits[i]["avatar_url"] + '">' + '<li>' + users[i]["username"]  +' rates it ' + visits[i]["city_rating"]  + ' out of 5 stars</li>'
+    }
   }
   return userVisitString
 }
