@@ -43,7 +43,14 @@ function formatCommentList(comments){
   let commentText = ""
   for (var i = 0; i < comments.length; i++) {
     let com = new Comment(comments[i]["id"],comments[i]["text"],comments[i]["user"]["username"],comments[i]["city"]["name"])
-    commentText += com.formatComment()
+
+    console.log(comments[i]["user"]["id"])
+    if (comments[i]["user"]["id"] === parseInt($("#comment_user_id").attr("value"))){
+      commentText += com.formatComment() + " <button class='delete-comment' data='" + com.id + "' onclick='deleteComment(this)'>Delete</button></li>"
+    } else {
+       commentText += com.formatComment() + "</li>"
+    }
+
   }
   return commentText
 }
@@ -111,7 +118,8 @@ function createComment(element){
     var comment = new Comment(data["id"], data["text"], data["user"]["username"], data["city"]["name"])
 
     // add new comment
-    $("#comments").append(comment.formatComment())
+    var createdComment = comment.formatComment() + " <button class='delete-comment' data='" + comment.id + "' onclick='deleteComment(this)'>Delete</button></li>"
+    $("#comments").append(createdComment)
 
     //reset comment form
     $("#submit").prop( "disabled", false )
@@ -128,7 +136,7 @@ function Comment(id,text,username,city){
 }
 
 Comment.prototype.formatComment = function(){
-    return "<li id='comment-"+ this.id +"'><strong>" + this.username + ": </strong>" + this.text + " <button class='delete-comment' data='" + this.id + "' onclick='deleteComment(this)'>Delete</button></li>"
+    return "<li id='comment-"+ this.id +"'><strong>" + this.username + ": </strong>" + this.text
   }
 
 document.addEventListener("turbolinks:load", attachListeners)
