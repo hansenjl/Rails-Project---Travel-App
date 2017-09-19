@@ -9,7 +9,7 @@ class Ability
 
     unless user.nil?
         can :manage, Visit, :user => {id: user.id}
-        can [:update, :destroy], User, { user_id: user.id}
+        can [:edit, :update, :destroy], User, { id: user.id}
         can [:update, :create], [City, Country]
         can :destroy, Country, :cities => nil
     end

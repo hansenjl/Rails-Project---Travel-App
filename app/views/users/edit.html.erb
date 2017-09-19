@@ -1,0 +1,27 @@
+<h2>Settings</h2>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited your settings from saving:
+    </h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @user do |f| %>
+Username: <%= f.text_field :username %> <br><br>
+Name: <%= f.text_field :name %> <br><br>
+Password: <%= f.password_field :password %> <br><br>
+Password Confirmation: <%= f.password_field :password_confirmation %> <br></br>
+<%= f.submit "Save Changes" %>
+<% end %>
+ <br></br>
+<%= link_to "Delete User", user_path(@user), method: 'delete', data: {confirm: "Are you sure?"} %>
