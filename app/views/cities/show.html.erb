@@ -28,6 +28,7 @@
 
 
 </div>
+<% if !!current_user%>
 <div class="comments">
   <h2>Comments:</h2>
   <ul id="comments">
@@ -52,3 +53,4 @@
     <%= f.submit "Submit", id: "submit"%>
   <% end %>
 </div>
+<%end%>

@@ -21,8 +21,15 @@ class Country < ApplicationRecord
     total_visits
   end
 
+
   def self.most_visited
-    Country.all.sort{ |a,b| b.visits_to_country <=> a.visits_to_country}.first
+    if @total_number_visits != nil && @total_number_visits === Visit.all.count
+      @country ||= Country.all.sort{ |a,b| b.visits_to_country <=> a.visits_to_country}.first
+    else
+      @country = Country.all.sort{ |a,b| b.visits_to_country <=> a.visits_to_country}.first
+      @total_number_visits = Visit.all.count
+    end
+    @country
   end
 
 
