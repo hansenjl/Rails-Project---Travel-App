@@ -32,6 +32,7 @@ function updateView(showId){
     $("h3.rating").text(ratingText)
     $(".js-previous").attr("data-id", data["id"])
     $(".js-next").attr("data-id", data["id"])
+    $(".edit-link").html(`<a href="/cities/${data["id"]}/edit">Edit City</a>`)
     $(".visited-by").html(userVisitText)
     $("#comments").html(commentList)
     $("#city-field").html(`<input value="${data["id"]}" type="hidden" name="comment[city_id]" id="comment_city_id">`)
