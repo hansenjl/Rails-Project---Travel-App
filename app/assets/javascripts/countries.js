@@ -18,5 +18,5 @@ function moreCountry(element) {
 function hideCountry(element){
   var id = element.dataset.id
   $("#country-"+id).html("")
-  $(`#hide-${id}-country`).replaceWith(`<button id="more-${id}-country" class="js-more" data-id="'" + id + "'" onclick="moreCountry(this)">Show Cities</button>`)
+  $(`#hide-${id}-country`).replaceWith(`<button id="more-${id}-country" class="js-more" data-id="${id}" onclick="moreCountry(this)">Show Cities</button>`)
 }
