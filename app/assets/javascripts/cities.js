@@ -25,7 +25,6 @@ function updateView(showId){
 
     var userVisitText = formatUserVisits(visits, data["users"])
 
-
     var commentList = formatCommentList(data["comments"])
 
     $("h3.visits").text(visitText)
@@ -51,7 +50,6 @@ function formatCommentList(comments){
     } else {
        commentText += com.formatComment() + "</li>"
     }
-
   }
   return commentText
 }
@@ -105,8 +103,6 @@ function deleteComment(element){
       $("#comment-"+result["id"]).replaceWith("")
     }
   })
-
-
 }
 
 function createComment(element){

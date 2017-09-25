@@ -6,17 +6,22 @@
 
 <h3>Most visited city: <%= City.most_visited.name %> | <%= City.most_visited.times_visited %> visits</h3>
 <h3>Highest ranked city: <%= City.most_popular.name %> | <%= City.most_popular.overall_rating %> stars </h3>
+<div class="flex">
+  <div class="col-6 border p2">
+    <h3>Current Users:</h3>
 
-<h3>Current Users:</h3>
-
-<% @users.each do |user| %>
-  <h4><%= link_to user.name, user_path(user) %></h4>
-  <label>Places <%= user.name %> visited:</label>
-  <ul>
-    <% user.cities.each do |city|%>
-      <%= render :partial => "countries/rankedcities", :locals => {:city => city}%>
+    <% @users.each do |user| %>
+      <h4><%= link_to user.name, user_path(user) %></h4>
+      <label>Places <%= user.name %> visited:</label>
+      <ul>
+        <% user.cities.each do |city|%>
+          <%= render :partial => "countries/rankedcities", :locals => {:city => city}%>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
+  </div>
+  <div style="background-color: blue;" class="col-6 border p2">
+    text
 
-
-<% end %>
+  </div>
+</div>
