@@ -12,6 +12,11 @@ protect_from_forgery
     render json: @comment
   end
 
+  def index
+    @comments = Comment.all
+    render json: @comments
+  end
+
 
   private
 

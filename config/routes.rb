@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :countries
   resources :cities
-  resources :comments, only: [:create, :update, :destroy]
+  resources :comments, only: [:create, :update, :destroy, :index]
   resources :users  do
     resources :visits
   end
