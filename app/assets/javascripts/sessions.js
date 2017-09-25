@@ -6,16 +6,20 @@ function attachListeners(){
   }
 }
 
+
 function getComments(){
   $.get("/comments.json", function(data){
-    console.log(data)
     let commentList = ''
     for (var i = 0; i < data.length; i++) {
       commentList = commentList + formatComment(data[i])
     }
+    $('#comment-container').html(`<h2 class="center">Comments:</h2><ul id="comment-scroll" class="center list-reset">
+    </ul> `)
     $("#comment-scroll").html(commentList)
   })
 }
+
+
 
 function formatComment(comment){
   let username = comment["user"]["username"]
