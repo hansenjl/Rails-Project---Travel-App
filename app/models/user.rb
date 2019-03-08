@@ -20,7 +20,7 @@ class User < ApplicationRecord
 #should this be memoized?
   def self.active_users
     #User.all.select{|user| !user.visits.empty?}
-    joins(:visits)  #much faster load time - 1 query total
+    joins(:visits).distinct  #much faster load time - 1 query total
   end
 
 end
