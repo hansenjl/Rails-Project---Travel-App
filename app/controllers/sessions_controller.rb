@@ -27,7 +27,9 @@ class SessionsController < ApplicationController
   end
 
   def welcome
-    @users = User.active_users
+    @users = User.includes(:cities)
+    @most_visited_city = City.most_visited
+    @most_popular_city = City.most_popular
   end
 
   def destroy

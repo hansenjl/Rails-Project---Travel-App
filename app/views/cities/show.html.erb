@@ -34,7 +34,7 @@
   <ul id="comments">
     <% @city.comments.each do |comment|%>
       <li id="comment-<%=comment.id%>">
-      <strong><%= comment.user.username%>: </strong><%= comment.text%>
+      <strong><%= comment.user.try(:username)%>: </strong><%= comment.text%>
       <%if current_user == comment.user%>
       <button class="delete-comment" data="<%=comment.id%>">Delete</button>
       <%end%>
