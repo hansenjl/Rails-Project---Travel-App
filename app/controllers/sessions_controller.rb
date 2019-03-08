@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def welcome
-    @users = User.includes(:cities)
+    @users = User.active_users.includes(:cities).uniq
     @most_visited_city = City.most_visited
     @most_popular_city = City.most_popular
   end
