@@ -6,6 +6,10 @@ class Visit < ApplicationRecord
   validates :city_rating, presence: true
   validate :not_a_repeat
 
+ def self.avg_rating_for_city(city_id)
+   where('city_id = ?', city_id).average(:city_rating).to_f
+ end
+
   def avatar_url
     avatar.url(:thumb)
   end
