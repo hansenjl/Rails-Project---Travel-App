@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :visits
+  has_many :visits, dependent: :destroy
   has_many :cities, through: :visits
   has_many :countries, through: :cities
-  has_many :comments
+  has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :visits
   validates :username, uniqueness: true
 
