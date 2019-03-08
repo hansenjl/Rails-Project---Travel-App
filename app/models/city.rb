@@ -7,10 +7,9 @@ class City < ApplicationRecord
   validates :country_id, presence: true
 
 
-
-
+#this might be better as a column on the City table that gets updated when a visit is created/updated
   def overall_rating
-    @a ||= Visit.avg_rating_for_city(self.id)
+    self.avg_rating ||= Visit.avg_rating_for_city(self.id)
     # if self.visited?
     #   total = 0
     #   self.visits.each do |visit|
@@ -21,6 +20,11 @@ class City < ApplicationRecord
     #   total = 0
     # end
     # total
+  end
+
+  def set_avg_rating
+    self.avg_rating = Visit.avg_rating_for_city(self.id)
+    self.save
   end
 
   def name_with_country
