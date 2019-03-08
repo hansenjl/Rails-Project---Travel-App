@@ -11,19 +11,37 @@ function previousCity(){
 function updateView(showId){
   $.get("/cities/" + showId + ".json", function(data){
 
-    $("h1").text(data["name"]+ ", " + data["country"]["name"])
-    var visits = data["visits"]
+    $("h1").text(data.name + ", " + data.country.name)
+    var visits = data.visits
     var visitText = "Visited 0 times"
     var ratingText = "Rating: N/A"
     if(visits.length === 1){
       visitText = "Visited 1 time"
-      ratingText = "Overall Rating: " + visits[0]["city_rating"]
+      ratingText = "Overall Rating: " + visits[0].city_rating
     } else if (visits.length > 1){
       visitText = "Visited " + visits.length +" times"
       ratingText = "Overall Rating: " + calcRating(visits)
     }
 
-    var userVisitText = formatUserVisits(visits, data["users"])
+    /*
+      GOAL sort visits by their city rating from highest to lowest
+      1. Create new array for sorted visits
+      2. Create a for loop that starts with the highest rating integer (rating is from 1-5) so for loop starts at 5
+      3. Create a for loop to iterate through each visit
+      4. Create an if statement to check it the visit rating is equal to the first for loops integer
+    */
+
+    let sortedVisits = []
+    for (var rating = 5; rating > 0 ; rating--) {
+      for (var i = 0; i < visits.length; i++) {
+        const visit = visits[i];
+        if (visit.city_rating === rating){
+          sortedVisits.push(visit)
+        }
+      }
+    }
+
+    var userVisitText = formatUserVisits(sortedVisits, data["users"])
 
     var commentList = formatCommentList(data["comments"])
 
