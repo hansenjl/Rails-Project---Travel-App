@@ -11,7 +11,6 @@ class VisitsController < ApplicationController
   def create
     @visit = Visit.new(visit_params)
     if @visit.save
-      @visit.city.set_avg_rating
       redirect_to user_visits_path(@user)
     else
       flash[:notice] = 'Visit was not saved. You cannot record the same visit twice and each visit must include a city, country, and rating.'
