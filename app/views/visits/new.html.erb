@@ -11,7 +11,7 @@
     <h3>Choose from a city below:</h3>
       <%= f.hidden_field :user_id, value: @user.id %>
 
-      City Name: <%= f.collection_select(:city_id, City.all, :id, :name_with_country, {prompt:true})  %>
+      City Name: <%= f.collection_select(:city_id, City.all.includes(:country), :id, :name_with_country, {prompt:true})  %>
   </div>
 
   <div class="right  mr4 p2 col-6">
