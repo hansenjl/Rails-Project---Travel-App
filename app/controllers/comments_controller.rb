@@ -13,7 +13,7 @@ protect_from_forgery
   end
 
   def index
-    @comments = Comment.all
+    @comments = Comment.includes(:user).includes(:city).all
     render json: @comments
   end
 
