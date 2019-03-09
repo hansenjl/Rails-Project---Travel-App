@@ -2,18 +2,10 @@
 
 <h3>Cities:</h3>
 <ol>
-  <% @country.cities.rated.each do |city|%>
+  <%= render :partial => "rankedcities", :locals => {:cities => @country.cities.rated}%>
 
-    <%= render :partial => "rankedcities", :locals => {:city => city}%>
-
-  <% end %>
-  <% @country.cities.unrated.each do |city|%>
-
-    <%= render :partial => "unrankedcities", :locals => {:city => city}%>
-
-  <% end %>
+  <%= render :partial => "unrankedcities", :locals => {:cities => @country.cities.unrated}%>
 </ol>
 
-<% if can? :update, City %>
-<%= link_to "Edit Country", edit_country_path(@country)%>
-<% end %>
+
+<%= link_to "Edit Country", edit_country_path(@country) if can? :update, Country%>
