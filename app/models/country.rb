@@ -1,5 +1,6 @@
 class Country < ApplicationRecord
   has_many :cities
+  has_many :visits, through: :cities
   validates :name, presence: true, uniqueness: true
 
   # def ranked_cities
@@ -16,7 +17,7 @@ class Country < ApplicationRecord
   def visits_to_country
     total_visits = 0
     self.cities.each do |city|
-      total_visits = total_visits + city.times_visited
+      total_visits = total_visits + city.num_of_visits
     end
     total_visits
   end
