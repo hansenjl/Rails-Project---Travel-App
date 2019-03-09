@@ -2,12 +2,12 @@
 
 <h3>Cities:</h3>
 <ol>
-  <% @country.ranked_cities.each do |city|%>
+  <% @country.cities.rated.each do |city|%>
 
     <%= render :partial => "rankedcities", :locals => {:city => city}%>
 
   <% end %>
-  <% @country.unranked_cities.each do |city|%>
+  <% @country.cities.unrated.each do |city|%>
 
     <%= render :partial => "unrankedcities", :locals => {:city => city}%>
 
