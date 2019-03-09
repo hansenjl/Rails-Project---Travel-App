@@ -5,11 +5,12 @@
 <h2>All Cities:</h2>
 
 <ul>
-<% @cities.each do |city|%>
-  <% if city.visited? %>
+<% @cities.rated.each do |city|%>
+
       <%= render :partial => "countries/rankedcities", :locals => {:city => city}%>
-    <% else %>
+ <% end %>
+
+ <% @cities.unrated.each do |city|%>
       <%= render :partial => "countries/unrankedcities", :locals => {:city => city}%>
-    <% end %>
 <% end %>
 </ul>
