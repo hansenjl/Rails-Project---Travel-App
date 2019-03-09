@@ -10,30 +10,16 @@ class City < ApplicationRecord
    def avg_rating
      visits.avg_rating
    end
-  #   # if self.visited?
-  #   #   total = 0
-  #   #   self.visits.each do |visit|
-  #   #     total = total + visit.city_rating.to_f
-  #   #   end
-  #   #   total = total / times_visited.to_f
-  #   # else
-  #   #   total = 0
-  #   # end
-  #   # total
-  # end
 
-  # def set_avg_rating
-  #   self.avg_rating = Visit.avg_rating_for_city(self.id)
-  #   self.save
-  # end
+  #this method is used ONLY when the cities haven't been preloaded using .rated
+  def num_of_visits
+    self.visits.size
+  end
 
   def name_with_country
     "#{self.name}, #{self.country.name}"
   end
 
-  def times_visited
-    self.visits.size
-  end
 
   def visited?
     self.times_visited > 0
@@ -47,7 +33,7 @@ class City < ApplicationRecord
   end
 
   def self.rated
-      select("cities.*, AVG(visits.city_rating) AS overall_rating").joins(:visits).group("cities.id")
+      select("cities.*, AVG(visits.city_rating) AS overall_rating, COUNT(cities.id) as times_visited").joins(:visits).group("cities.id")
   end
 
   def self.unrated
