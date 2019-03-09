@@ -6,9 +6,8 @@ class City < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :country_id, presence: true
 
-
-#this might be better as a column on the City table that gets updated when a visit is created/updated
-   def overall_rating
+   #this method is used ONLY when the cities haven't been preloaded using .rated
+   def avg_rating
      visits.avg_rating
    end
   #   # if self.visited?
