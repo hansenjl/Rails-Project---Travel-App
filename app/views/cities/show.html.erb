@@ -8,7 +8,7 @@
 
 <div>
   <% if @city.visited? %>
-    <h3 class="visits">Visited <%= pluralize(@city.times_visited, "time")%> </h3>
+    <h3 class="visits">Visited <%= pluralize(@city.num_of_visits, "time")%> </h3>
     <h3 class="rating">Overall Rating: <%= @city.avg_rating %></h3>
     <ul class="visited-by">
       <% @city.visits.includes(:user).each do |visit| %>

@@ -22,7 +22,7 @@ class City < ApplicationRecord
 
 
   def visited?
-    self.times_visited > 0
+    self.try(:times_visited) != 0 ||  self.num_of_visits != 0
   end
 
   def country_field=(country_field)
