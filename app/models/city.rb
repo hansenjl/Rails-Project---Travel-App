@@ -8,8 +8,9 @@ class City < ApplicationRecord
 
 
 #this might be better as a column on the City table that gets updated when a visit is created/updated
-  # def overall_rating
-  #   self.avg_rating ||= Visit.avg_rating_for_city(self.id)
+   def overall_rating
+     visits.avg_rating
+   end
   #   # if self.visited?
   #   #   total = 0
   #   #   self.visits.each do |visit|

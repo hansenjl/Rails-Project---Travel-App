@@ -11,7 +11,7 @@
     <h3 class="visits">Visited <%= pluralize(@city.times_visited, "time")%> </h3>
     <h3 class="rating">Overall Rating: <%= @city.overall_rating %></h3>
     <ul class="visited-by">
-      <% @city.visits.each do |visit| %>
+      <% @city.visits.includes(:user).each do |visit| %>
       <%= image_tag visit.avatar.url(:thumb)%>
       <li><%= visit.user.username%> rates it <%= visit.city_rating%> out of 5 stars</li>
       <% end %>
@@ -32,7 +32,7 @@
 <div class="comments">
   <h2>Comments:</h2>
   <ul id="comments">
-    <% @city.comments.each do |comment|%>
+    <% @city.comments.includes(:user).each do |comment|%>
       <li id="comment-<%=comment.id%>">
       <strong><%= comment.user.try(:username)%>: </strong><%= comment.text%>
       <%if current_user == comment.user%>

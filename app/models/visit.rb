@@ -10,6 +10,10 @@ class Visit < ApplicationRecord
    where('city_id = ?', city_id).average(:city_rating).to_f
  end
 
+ def self.avg_rating
+    average(:city_rating).to_f
+ end
+
   def avatar_url
     avatar.url(:thumb)
   end
