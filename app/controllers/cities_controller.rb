@@ -26,7 +26,7 @@ class CitiesController < ApplicationController
   end
 
   def index
-    @cities = City.all.sort{|a,b|b.visits.count <=> a.visits.count}
+    @cities = City.all.includes(:country)
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @cities}
