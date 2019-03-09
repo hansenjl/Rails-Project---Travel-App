@@ -21,7 +21,7 @@
       <h3><%= link_to user.name, user_path(user) %></h3>
       <label>Places <%= user.name %> visited:</label>
       <ul>
-        <% user.cities.each do |city|%>
+        <% user.cities.rated.each do |city|%>
           <%= render :partial => "countries/rankedcities", :locals => {:city => city}%>
         <% end %>
       </ul>

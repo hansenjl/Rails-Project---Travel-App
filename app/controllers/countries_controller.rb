@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_country, only: [:show, :edit, :update]
+  before_action :set_country, only: [:edit, :update]
 
   def new
     @country = Country.new
